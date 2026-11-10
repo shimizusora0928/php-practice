@@ -56,7 +56,8 @@ foreach ($areas as $prefecture => $capitalCity) {
 }
 
 // Q9 連想配列-3
-$areas = [...$areas, "大阪府" => "大阪市", "愛知県" => "名古屋市"];
+$newAreas = ["大阪府" => "大阪市", "愛知県" => "名古屋市"];
+$areas = array_merge($areas, $newAreas);
 
 foreach ($areas as $prefecture => $capitalCity) {
   if (in_array($prefecture, ["大阪府", "愛知県"])) {
