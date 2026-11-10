@@ -16,14 +16,10 @@ echo "現在時刻は、". $currentTime. "です。";
 // Q4 条件分岐-1 if文
 $device = "MacOSではない";
 
-if ($device !== "windows" && $device !== "mac") {
-  echo "どちらでもありません。";
+if ($device === "windows" || $device === "mac") {
+  echo "使用OSは、". $device. "です。";
 } else {
-  if ($device === "windows") {
-    echo "使用OSは、". $device. "です。";
-  } else {
-    echo "使用OSは、". $device. "です。";
-  }
+  echo "どちらでもありません。";
 }
 
 // Q5 条件分岐-2 三項演算子
@@ -44,9 +40,7 @@ $areas = [
   "埼玉県" => "さいたま市", 
   "茨城県" => "水戸市", 
   "栃木県" => "宇都宮市", 
-  "群馬県" => "前橋市",
-  "大阪府" => "大阪市",
-  "愛知県" => "名古屋市"
+  "群馬県" => "前橋市"
   ];
 
   foreach ($areas as $area) {
@@ -54,19 +48,21 @@ $areas = [
   }
 
 // Q8 連想配列-2
-foreach ($areas as $key => $value) {
-  if ($key === "埼玉県" && $value === "さいたま市") {
-    echo $key. "の県庁所在地は、". $value. "です。";
+foreach ($areas as $prefecture => $capitalCity) {
+  if ($prefecture === "埼玉県" && $capitalCity === "さいたま市") {
+    echo $prefecture. "の県庁所在地は、". $capitalCity. "です。";
     break;
   }
 }
 
 // Q9 連想配列-3
-foreach ($areas as $key => $value) {
-  if ($key === "大阪府" || $key === "愛知県") {
-    echo $key. "は関東地方ではありません。\n";
+$areas = [...$areas, "大阪府" => "大阪市", "愛知県" => "名古屋市"];
+
+foreach ($areas as $prefecture => $capitalCity) {
+  if (in_array($prefecture, ["大阪府", "愛知県"])) {
+    echo $prefecture. "は関東地方ではありません。\n";
   } else {
-    echo $key. "の県庁所在地は、". $value. "です。\n";
+    echo $prefecture. "の県庁所在地は、". $capitalCity. "です。\n";
   }
 }
 
